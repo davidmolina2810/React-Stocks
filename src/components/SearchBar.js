@@ -1,32 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const SearchBar = () => {
-  return (
-    <div>
+class SearchBar extends Component {
+  state = {
+    alphabetical: null,
+    price: null
+  }
 
-      <strong>Sort by:</strong>
-      <label>
-        <input type="radio" value="Alphabetically" checked={null} onChange={null}/>
-        Alphabetically
-      </label>
-      <label>
-        <input type="radio" value="Price" checked={null} onChange={null}/>
-        Price
-      </label>
-      <br/>
+  render() {
+    return (
+      <div>
 
-      <label>
-        <strong>Filter:</strong>
-        <select onChange={null}>
-          <option value="Tech">Tech</option>
-          <option value="Sportswear">Sportswear</option>
-          <option value="Finance">Finance</option>
-        </select>
-      </label>
+        <strong>Sort by:</strong>
+        <label>
+          <input type="radio" value="Alphabetically" checked={this.props.sort === "Alphabetically"} onChange={this.props.changeSort}/>
+          Alphabetically
+        </label>
+        <label>
+          <input type="radio" value="Price" checked={this.props.sort === "Price"} onChange={this.props.changeSort}/>
+          Price
+        </label>
+        <br/>
+
+        <label>
+          <strong>Filter:</strong>
+          <select onChange={this.props.handleFilter}>
+            <option value="Tech">Tech</option>
+            <option value="Sportswear">Sportswear</option>
+            <option value="Finance">Finance</option>
+          </select>
+        </label>
 
 
-    </div>
-  );
+      </div>
+    );
+  }
 }
 
 
